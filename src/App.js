@@ -21,18 +21,20 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    getData("items");
-    if ((items.length = 0)) {
-      items.push(formData);
-    } else {
-      items.concat(formData);
-    }
+    items.push(formData);
+
     console.log(formData);
 
     storeData("items", items);
 
     setFormData(initialValues);
-  };
+  }; 
+
+
+  const data = getData("items")
+  console.log(data)
+  console.log(data.length)
+
 
   return (
     <div>
