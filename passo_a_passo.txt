@@ -1,0 +1,10 @@
+- armazenar no localStorage uma key "tokenList" com um value de "[{token: "", balance: ""}]"
+
+- criar um array tokenList e iniciar vazio
+
+- buscar dados no localStorage, se vazio/nulo, mostrar mensagem de "Não há Tokens" / se houver, mostrá-los na tela
+
+- pegar dados do form e adicioná-los no array tokenList
+
+- enviar tokenList para o localStorage
+

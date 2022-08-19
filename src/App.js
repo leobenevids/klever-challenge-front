@@ -1,69 +1,16 @@
-import { useState } from "react";
+import { Fragment } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { GlobalStyles } from "./styles/GlobalStyles";
+import Routes from "./routes/Routes";
 
 function App() {
-  const initialValues = { token: "", balance: "" };
-  const [formData, setFormData] = useState(initialValues);
-
-  const items = [];
-
-  const storeData = (key, value) => {
-    localStorage.setItem(key, JSON.stringify(value));
-  };
-
-  const getData = (key) => {
-    return JSON.parse(localStorage.getItem(key));
-  };
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    items.push(formData);
-
-    console.log(formData);
-
-    storeData("items", items);
-
-    setFormData(initialValues);
-  }; 
-
-
-  const data = getData("items")
-  console.log(data)
-  console.log(data.length)
-
-
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Token
-          <input
-            type="text"
-            placeholder="type the Token's name"
-            name="token"
-            value={formData.token}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Balance
-          <input
-            type="number"
-            placeholder="type the balance"
-            name="balance"
-            value={formData.balance}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <button type="submit">Send</button>
-      </form>
-    </div>
+    <Fragment>
+      <GlobalStyles />
+      <Router>
+        <Routes />
+      </Router>
+    </Fragment>
   );
 }
 
