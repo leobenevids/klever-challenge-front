@@ -29,6 +29,10 @@ input {
     font-size: 1.2rem;
 }
 
+input:focus {
+    outline: none;
+}
+
 button {
     width: 120px;
     height: 40px;

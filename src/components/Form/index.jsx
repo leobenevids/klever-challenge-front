@@ -20,7 +20,7 @@ import { useForm } from "../../hooks/useForm";
 import { useCoinContext } from "../../hooks/useCoinContext";
 
 // styles
-import { FormWrapper, Container } from "./styles";
+import { FormContainer, Container } from "./styles";
 
 // components
 import WishWallet from "../WishWallet";
@@ -56,12 +56,11 @@ const Form = () => {
 
   return (
     <Container>
-
       <WishWallet />
 
-      <FormWrapper onSubmit={handleSubmit}>
+      <FormContainer onSubmit={handleSubmit}>
         <div>
-          <h2>{id ? "Edit" : "Add"} Token</h2>
+          <h3>{id ? "Edit" : "Add"} Token</h3>
           <button className="back-button" onClick={() => navigate("/")}>
             Back
           </button>
@@ -85,19 +84,19 @@ const Form = () => {
           required
         />
 
-        {id ? (
-          <button className="remove-button" onClick={() => deleteCoin()}>
-            Remover
+        <div>
+          {id ? (
+            <button className="remove-button" onClick={() => deleteCoin()}>
+              Remover
+            </button>
+          ) : (
+            <span></span>
+          )}
+          <button type="submit" className="progress-button">
+            Save
           </button>
-        ) : (
-          ""
-        )}
-        <button type="submit" className="progress-button">
-          Save
-        </button>
-
-      </FormWrapper>
-
+        </div>
+      </FormContainer>
     </Container>
   );
 };

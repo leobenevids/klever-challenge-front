@@ -1,6 +1,9 @@
+// assets
+import logo from "../../assets/logo.svg";
+
+// styles
 import { Wrapper } from "./styles";
 
-import logo from "../../assets/logo.svg";
 
 const Header = () => {
   return (

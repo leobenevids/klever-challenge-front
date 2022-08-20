@@ -1,8 +1,16 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+// services
 import { getListCoins } from "../../services/localStorage";
+
+// hooks
 import { useCoinContext } from "../../hooks/useCoinContext";
+
+// styles
 import { Container, Table } from "./styles";
+
+// components
 import WishWallet from "../WishWallet";
 import Item from "../Item";
 

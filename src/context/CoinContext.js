@@ -7,6 +7,7 @@ export const CoinContext = createContext();
 export const CoinContextProvider = ({ children }) => {
   const [coins, setCoins] = useState([]);
 
+
   return (
     <CoinContext.Provider value={{ coins, setCoins }}>
       {children}

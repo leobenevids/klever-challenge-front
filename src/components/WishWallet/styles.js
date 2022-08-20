@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.section`
   color: 1px solid gold;
   display: flex;
   align-items: center;
