@@ -1,26 +1,17 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 export const Container = styled.div`
   width: 40%;
   padding: 1rem;
   text-align: center;
   align-items: center;
+
   div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
-  h3 {
-    margin: 3rem auto;
-  }
+
 `;
 
 export const Table = styled.table`

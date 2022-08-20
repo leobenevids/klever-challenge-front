@@ -1,13 +1,11 @@
-import { Wrapper, Container } from "./styles";
+import { Wrapper } from "./styles";
 
 import logo from "../../assets/logo.svg";
 
 const Header = () => {
   return (
     <Wrapper>
-      <Container>
-        <img src={logo} alt="klever logo" />
-      </Container>
+      <img src={logo} alt="klever logo" />
     </Wrapper>
   );
 };

@@ -41,6 +41,8 @@ button {
 
 button:hover {
     cursor: pointer;
+    opacity: 0.9;
+    transition: 0.3s ease-in-out;
 }
 
 .progress-button {
@@ -56,10 +58,3 @@ button:hover {
 }
 `;
 
-export const Wrapper = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;

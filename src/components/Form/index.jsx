@@ -1,5 +1,10 @@
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
+
 import { useNavigate, useParams } from "react-router-dom";
+
+import uuid from "react-uuid";
+
+// services
 import {
   addCoin,
   getCoinById,
@@ -7,13 +12,18 @@ import {
   getListCoins,
   editCoin,
 } from "../../services/localStorage";
-import { useForm } from "../../hooks/useForm";
-import uuid from "react-uuid";
-import { useCoinContext } from "../../hooks/useCoinContext";
-import { FormWrapper, Wrapper, Container } from "./styles";
-import Header from "../Header";
 
-import InputMask from "react-input-mask";
+// custom hooks
+import { useForm } from "../../hooks/useForm";
+
+// context
+import { useCoinContext } from "../../hooks/useCoinContext";
+
+// styles
+import { FormWrapper, Container } from "./styles";
+
+// components
+import WishWallet from "../WishWallet";
 
 const Form = () => {
   const { setCoins } = useCoinContext();
@@ -45,52 +55,50 @@ const Form = () => {
   };
 
   return (
-    <Fragment>
-      <Header />
-      <Wrapper>
-        <Container>
-          <div>
-            <h2>{id ? "Edit" : "Add"} Token</h2>
-            <button className="back-button" onClick={() => navigate("/")}>
-              Back
-            </button>
-          </div>
-          <FormWrapper onSubmit={handleSubmit}>
-            <label>Token</label>
-            <input
-              type="text"
-              name="token"
-              value={inputValues.token}
-              onChange={handleInputChange}
-              required
-            />
+    <Container>
 
-            <label>Balance</label>
-            <InputMask
-              mask="9,999.99"
-              // type="number"
-              name="balance"
-              value={inputValues.balance}
-              onChange={handleInputChange}
-              required
-            />
+      <WishWallet />
 
-            <div>
-              {id ? (
-                <button className="remove-button" onClick={() => deleteCoin()}>
-                  Remover
-                </button>
-              ) : (
-                ""
-              )}
-              <button type="submit" className="progress-button">
-                Save
-              </button>
-            </div>
-          </FormWrapper>
-        </Container>
-      </Wrapper>
-    </Fragment>
+      <FormWrapper onSubmit={handleSubmit}>
+        <div>
+          <h2>{id ? "Edit" : "Add"} Token</h2>
+          <button className="back-button" onClick={() => navigate("/")}>
+            Back
+          </button>
+        </div>
+
+        <label>Token</label>
+        <input
+          type="text"
+          name="token"
+          value={inputValues.token}
+          onChange={handleInputChange}
+          required
+        />
+
+        <label>Balance</label>
+        <input
+          type="number"
+          name="balance"
+          value={inputValues.balance}
+          onChange={handleInputChange}
+          required
+        />
+
+        {id ? (
+          <button className="remove-button" onClick={() => deleteCoin()}>
+            Remover
+          </button>
+        ) : (
+          ""
+        )}
+        <button type="submit" className="progress-button">
+          Save
+        </button>
+
+      </FormWrapper>
+
+    </Container>
   );
 };
 

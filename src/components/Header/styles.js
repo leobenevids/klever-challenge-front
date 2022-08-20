@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 export const Wrapper = styled.header`
   width: 100%;
-  padding: 1rem;
-`;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-export const Container = styled.div`
-  margin: 2rem auto;
-  width: 20%;
   img {
-    width: 200px;
+    width: 150px;
   }
 `;

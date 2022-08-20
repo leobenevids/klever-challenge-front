@@ -1,17 +1,18 @@
-import React from "react";
+// styles
 import { Wrapper } from "./styles";
 
 // components
 import Header from "../../components/Header";
-import List from "../../components/List";
+import Form from "../../components/Form";
 
-const Home = () => {
+
+const FormPage = () => {
   return (
     <Wrapper>
       <Header />
-      <List />
+      <Form />
     </Wrapper>
   );
 };
 
-export default Home;
+export default FormPage;
