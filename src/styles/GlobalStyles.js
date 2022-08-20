@@ -19,8 +19,18 @@ body {
     font-weight: 600;
 }
 
+input {
+    padding-left: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    height: 2rem;
+    font-weight: 800;
+    font-family: Montserrat;
+    font-size: 1.2rem;
+}
+
 button {
-    width: 150px;
+    width: 120px;
     height: 40px;
     color: var(--white);
     font-family: Montserrat;
@@ -53,4 +63,3 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-

@@ -1,7 +1,5 @@
-import React from "react";
+import { Wrapper } from "./styles";
 import star from "../../assets/shooting-star.svg";
-
-import {Wrapper} from './styles'
 
 const WishWallet = () => {
   return (

@@ -1,16 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 
-// pages
-import Home from "../pages/Home";
-import AddToken from "../pages/AddToken";
-import EditToken from "../pages/EditToken";
+// components
+import Form from "../components/Form";
+import List from "../components/List";
 
 export default function routes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/add" element={<AddToken />} />
-      <Route path="/edit/:id" element={<EditToken />} />
+      <Route path="/" element={<List />} />
+      <Route path="/create-coin" element={<Form />} />
+      <Route path="/edit-coin/:id" element={<Form />} />
     </Routes>
   );
 }

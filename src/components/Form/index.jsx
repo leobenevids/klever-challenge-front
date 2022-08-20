@@ -1,74 +1,95 @@
-import React, { Fragment, useState } from "react";
+import { Fragment, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  addCoin,
+  getCoinById,
+  removeCoin,
+  getListCoins,
+  editCoin,
+} from "../../services/localStorage";
+import { useForm } from "../../hooks/useForm";
+import uuid from "react-uuid";
+import { useCoinContext } from "../../hooks/useCoinContext";
+import { FormWrapper, Wrapper, Container } from "./styles";
+import Header from "../Header";
 
-import { NavLink, useNavigate } from "react-router-dom";
-
-import { FormWrapper } from "./styles";
+import InputMask from "react-input-mask";
 
 const Form = () => {
+  const { setCoins } = useCoinContext();
   const navigate = useNavigate();
+  const { id } = useParams();
+  const { inputValues, handleInputChange, resetForm, setForm } = useForm({
+    token: "",
+    balance: "",
+  });
 
-  const initialValues = { token: "", balance: "" };
+  useEffect(() => {
+    if (id) {
+      const coin = getCoinById(id);
+      setForm(coin);
+    }
+  }, [id]);
 
-  const [tokenData, setTokenData] = useState(initialValues);
-
-  let tokenList = [];
-
-  const storeData = (key, value) => {
-    localStorage.setItem(key, JSON.stringify(value));
+  const deleteCoin = () => {
+    removeCoin(id);
+    setCoins(getListCoins());
+    navigate("/");
   };
 
-  const getData = (key) => {
-    return JSON.parse(localStorage.getItem(key));
-  };
-
-  // handle onChange function
-  const handleChange = (e) => {
-    setTokenData({ ...tokenData, [e.target.name]: e.target.value });
-  };
-
-  // handle onSubmit function
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (getData("tokenList") === null) {
-      tokenList = [];
-    } else {
-      tokenList = getData("tokenList");
-    }
-
-    tokenList.push(tokenData);
-    console.log(tokenData);
-    storeData("tokenList", tokenList);
-    setTokenData(initialValues);
-
+    id ? editCoin(id, inputValues) : addCoin({ id: uuid(), ...inputValues });
+    resetForm();
     navigate("/");
   };
 
   return (
     <Fragment>
-      <FormWrapper onSubmit={handleSubmit}>
-        <label>Token</label>
-        <input
-          type="text"
-          name="token"
-          value={tokenData.token}
-          onChange={handleChange}
-          required
-        />
+      <Header />
+      <Wrapper>
+        <Container>
+          <div>
+            <h2>{id ? "Edit" : "Add"} Token</h2>
+            <button className="back-button" onClick={() => navigate("/")}>
+              Back
+            </button>
+          </div>
+          <FormWrapper onSubmit={handleSubmit}>
+            <label>Token</label>
+            <input
+              type="text"
+              name="token"
+              value={inputValues.token}
+              onChange={handleInputChange}
+              required
+            />
 
-        <label>Balance</label>
-        <input
-          type="number"
-          name="balance"
-          value={tokenData.balance}
-          onChange={handleChange}
-          required
-        />
+            <label>Balance</label>
+            <InputMask
+              mask="9,999.99"
+              // type="number"
+              name="balance"
+              value={inputValues.balance}
+              onChange={handleInputChange}
+              required
+            />
 
-        <button type="submit" className="progress-button">
-          Save
-        </button>
-      </FormWrapper>
+            <div>
+              {id ? (
+                <button className="remove-button" onClick={() => deleteCoin()}>
+                  Remover
+                </button>
+              ) : (
+                ""
+              )}
+              <button type="submit" className="progress-button">
+                Save
+              </button>
+            </div>
+          </FormWrapper>
+        </Container>
+      </Wrapper>
     </Fragment>
   );
 };

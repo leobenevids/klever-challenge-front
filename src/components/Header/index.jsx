@@ -1,16 +1,14 @@
-import React from "react";
-
-import { NavWrapper, NavContainer } from "./styles";
+import { Wrapper, Container } from "./styles";
 
 import logo from "../../assets/logo.svg";
 
 const Header = () => {
   return (
-    <NavWrapper>
-      <NavContainer>
+    <Wrapper>
+      <Container>
         <img src={logo} alt="klever logo" />
-      </NavContainer>
-    </NavWrapper>
+      </Container>
+    </Wrapper>
   );
 };
 
