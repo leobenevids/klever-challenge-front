@@ -20,10 +20,11 @@ const List = () => {
 
   useEffect(() => {
     setCoins(getListCoins());
-  }, []);
+  }, [setCoins]);
 
   return (
     <Container>
+
       <div>
         <WishWallet />
         <button
@@ -51,6 +52,7 @@ const List = () => {
       ) : (
         <h3>No token registered.</h3>
       )}
+
     </Container>
   );
 };

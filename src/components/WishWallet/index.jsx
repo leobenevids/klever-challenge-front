@@ -1,5 +1,8 @@
-import { Wrapper } from "./styles";
+// assets
 import star from "../../assets/shooting-star.svg";
+
+// styles
+import { Wrapper } from "./styles";
 
 const WishWallet = () => {
   return (

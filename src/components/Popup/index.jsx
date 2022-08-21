@@ -1,4 +1,4 @@
-import React from "react";
+// styles
 import { Background, Container } from "./styles";
 
 const Popup = ({ isOpen, handleDelete }) => {
@@ -8,10 +8,10 @@ const Popup = ({ isOpen, handleDelete }) => {
         <h3>Are you sure you want to delete this?</h3>
         <div>
           <button className="remove-button" onClick={() => handleDelete()}>
-            Delete
+            Yes, delete
           </button>
           <button className="back-button" onClick={() => isOpen(false)}>
-            Return
+            No, return
           </button>
         </div>
       </Container>

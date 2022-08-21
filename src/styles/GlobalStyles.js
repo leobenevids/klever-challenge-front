@@ -1,24 +1,25 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 
-export const GlobalStyles = createGlobalStyle`
-*{
---purple: #13152a;
---violet: #aa33b5;
---white: #fefefc;
---gray: #646464;
---red: #920000;
-}
+export const GlobalStyles = createGlobalStyle`${css`
+  * {
+    --purple: #13152a;
+    --violet: #aa33b5;
+    --white: #fefefc;
+    --gray: #646464;
+    --red: #920000;
+  }
 
-body {
+  body {
     margin: 0;
     padding: 0;
     background-color: var(--purple);
     color: var(--white);
     font-family: Montserrat;
     font-weight: 600;
-}
+    overflow: hidden;
+  }
 
-input {
+  input {
     padding-left: 0.5rem;
     border-radius: 5px;
     border: none;
@@ -26,13 +27,13 @@ input {
     font-weight: 800;
     font-family: Montserrat;
     font-size: 1.2rem;
-}
+  }
 
-input:focus {
+  input:focus {
     outline: none;
-}
+  }
 
-button {
+  button {
     width: 120px;
     height: 40px;
     color: var(--white);
@@ -40,23 +41,24 @@ button {
     font-weight: 600;
     border: none;
     border-radius: 5px;
-}
+  }
 
-button:hover {
+  button:hover {
     cursor: pointer;
     opacity: 0.85;
     transition: 0.3s ease-in-out;
-}
+  }
 
-.progress-button {
-    background: var(--violet)
-}
+  .progress-button {
+    background: var(--violet);
+  }
 
-.back-button {
+  .back-button {
     background: var(--gray);
-}
+  }
 
-.remove-button {
+  .remove-button {
     background: var(--red);
-}
+  }
+`}
 `;

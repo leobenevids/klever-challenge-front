@@ -1,1 +1,0 @@
-- máscara para formatar o valor do input de balance

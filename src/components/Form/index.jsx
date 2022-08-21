@@ -13,7 +13,7 @@ import {
   editCoin,
 } from "../../services/localStorage";
 
-// custom hooks
+// custom hook
 import { useForm } from "../../hooks/useForm";
 
 // context
@@ -26,6 +26,7 @@ import { FormContainer, Container } from "./styles";
 import WishWallet from "../WishWallet";
 import Popup from "../Popup";
 
+// custom input mask
 import currencyMask from "../../utils/currencyMask";
 
 const Form = () => {
@@ -38,7 +39,6 @@ const Form = () => {
   });
   const [openPopup, setOpenPopup] = useState(false);
 
-  // recovering data on input fields
   useEffect(() => {
     if (id) {
       const coin = getCoinById(id);
@@ -46,14 +46,12 @@ const Form = () => {
     }
   }, [id]);
 
-  // delete function
   const deleteCoin = () => {
     removeCoin(id);
     setCoins(getListCoins());
     navigate("/");
   };
 
-  // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
     id ? editCoin(id, inputValues) : addCoin({ id: uuid(), ...inputValues });
@@ -76,6 +74,8 @@ const Form = () => {
         <label>Token</label>
         <input
           type="text"
+          maxLength="4"
+          placeholder="KLV"
           name="token"
           value={inputValues.token}
           onChange={handleInputChange}
@@ -84,6 +84,7 @@ const Form = () => {
 
         <label>Balance</label>
         <input
+          placeholder="0,000.00"
           name="balance"
           value={inputValues.balance}
           onChange={(e) => {

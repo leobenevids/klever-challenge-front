@@ -1,4 +1,6 @@
 import { useContext } from "react";
+
+// my context
 import { CoinContext } from "../context/CoinContext";
 
 export const useCoinContext = () => {

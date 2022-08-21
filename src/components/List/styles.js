@@ -12,6 +12,9 @@ export const Container = styled.div`
     justify-content: space-between;
   }
 
+  @media screen and (min-width: 1280px) {
+    width: 20%;
+  }
 `;
 
 export const Table = styled.table`

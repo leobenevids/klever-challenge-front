@@ -4,6 +4,10 @@ export const Container = styled.div`
   width: 40%;
   padding: 1rem;
   align-items: center;
+
+  @media screen and (min-width: 1280px) {
+    width: 20%;
+  }
 `;
 
 export const FormContainer = styled.form`
@@ -25,5 +29,4 @@ export const FormContainer = styled.form`
   input {
     margin: 1rem 0;
   }
-
 `;
