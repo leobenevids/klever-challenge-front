@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-// Global Styles
+// global styles
 import { GlobalStyles } from "./styles/GlobalStyles";
 
-// Routes
+// routes
 import Routes from "./routes/Routes";
 
 function App() {
