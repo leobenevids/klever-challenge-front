@@ -1,9 +1,22 @@
-import React from 'react'
+import React from "react";
+import { Background, Container } from "./styles";
 
-const Popup = () => {
+const Popup = ({ isOpen, handleDelete }) => {
   return (
-    <div>Popup</div>
-  )
-}
+    <Background onClick={() => isOpen(false)}>
+      <Container onClick={(e) => e.stopPropagation()}>
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+          <button className="remove-button" onClick={() => handleDelete()}>
+            Delete
+          </button>
+          <button className="back-button" onClick={() => isOpen(false)}>
+            Return
+          </button>
+        </div>
+      </Container>
+    </Background>
+  );
+};
 
-export default Popup
+export default Popup;

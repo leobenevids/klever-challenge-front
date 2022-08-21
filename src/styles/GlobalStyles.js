@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import styled from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 *{
@@ -45,7 +44,7 @@ button {
 
 button:hover {
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.85;
     transition: 0.3s ease-in-out;
 }
 
@@ -61,4 +60,3 @@ button:hover {
     background: var(--red);
 }
 `;
-

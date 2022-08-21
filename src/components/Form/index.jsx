@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -24,6 +24,7 @@ import { FormContainer, Container } from "./styles";
 
 // components
 import WishWallet from "../WishWallet";
+import Popup from "../Popup";
 
 const Form = () => {
   const { setCoins } = useCoinContext();
@@ -33,7 +34,9 @@ const Form = () => {
     token: "",
     balance: "",
   });
+  const [openPopup, setOpenPopup] = useState(false);
 
+  // recovering data on input fields
   useEffect(() => {
     if (id) {
       const coin = getCoinById(id);
@@ -41,12 +44,14 @@ const Form = () => {
     }
   }, [id]);
 
+  // delete function
   const deleteCoin = () => {
     removeCoin(id);
     setCoins(getListCoins());
     navigate("/");
   };
 
+  // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
     id ? editCoin(id, inputValues) : addCoin({ id: uuid(), ...inputValues });
@@ -62,7 +67,7 @@ const Form = () => {
         <div>
           <h3>{id ? "Edit" : "Add"} Token</h3>
           <button className="back-button" onClick={() => navigate("/")}>
-            Back
+            Return
           </button>
         </div>
 
@@ -86,8 +91,12 @@ const Form = () => {
 
         <div>
           {id ? (
-            <button className="remove-button" onClick={() => deleteCoin()}>
-              Remover
+            <button
+              type="button"
+              className="remove-button"
+              onClick={() => setOpenPopup(true)}
+            >
+              Delete
             </button>
           ) : (
             <span></span>
@@ -97,6 +106,7 @@ const Form = () => {
           </button>
         </div>
       </FormContainer>
+      {openPopup && <Popup isOpen={setOpenPopup} handleDelete={deleteCoin} />}
     </Container>
   );
 };
