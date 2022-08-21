@@ -26,6 +26,8 @@ import { FormContainer, Container } from "./styles";
 import WishWallet from "../WishWallet";
 import Popup from "../Popup";
 
+import currencyMask from "../../utils/currencyMask";
+
 const Form = () => {
   const { setCoins } = useCoinContext();
   const navigate = useNavigate();
@@ -82,10 +84,11 @@ const Form = () => {
 
         <label>Balance</label>
         <input
-          type="number"
           name="balance"
           value={inputValues.balance}
-          onChange={handleInputChange}
+          onChange={(e) => {
+            handleInputChange(currencyMask(e));
+          }}
           required
         />
 
@@ -106,6 +109,7 @@ const Form = () => {
           </button>
         </div>
       </FormContainer>
+
       {openPopup && <Popup isOpen={setOpenPopup} handleDelete={deleteCoin} />}
     </Container>
   );

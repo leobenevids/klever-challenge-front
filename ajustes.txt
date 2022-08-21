@@ -1,4 +1,1 @@
-- formatar valor de balance
-- adicionar WishWallet ao Form
-- resolver posição do botão de deletar
-- criar modal de confirmação de exclusão
+- máscara para formatar o valor do input de balance

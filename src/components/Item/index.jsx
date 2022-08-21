@@ -4,6 +4,7 @@ import { BiEdit } from "react-icons/bi";
 const Item = ({ coin }) => {
   const { id, token, balance } = coin;
   const navigate = useNavigate();
+ 
 
   return (
     <tr>
